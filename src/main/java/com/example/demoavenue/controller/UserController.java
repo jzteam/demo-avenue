@@ -1,7 +1,6 @@
 package com.example.demoavenue.controller;
 
 import cn.jzteam.avenue.dao.query.QueryCondition;
-import com.alibaba.fastjson.JSON;
 import com.example.demoavenue.dao.IUserKycInfoDao;
 import com.example.demoavenue.entities.UserKycInfoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +23,7 @@ public class UserController {
     }
 
     @RequestMapping("/infos/{kycId}")
-    public String infos(@PathVariable("kycId") Long kycId){
-
-//        final UserKycInfoEntity userKycInfoEntity = dao.selectById(kycId);
+    public List<UserKycInfoEntity> infos(@PathVariable("kycId") Long kycId){
 
         final QueryCondition queryCondition = new QueryCondition();
         queryCondition.setHasCount(true);
@@ -34,7 +31,7 @@ public class UserController {
 
         final List<UserKycInfoEntity> userKycInfoEntities = dao.selectList(queryCondition);
 
-        return JSON.toJSONString(userKycInfoEntities);
+        return userKycInfoEntities;
 
     }
 }
