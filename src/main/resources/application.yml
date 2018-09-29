@@ -1,17 +1,9 @@
-#spring:
-#  datasource:
-#    manager:
-#      slaves:
-#        - name: zhujizhi
-#          pwd: nixiang
-#        - name: jzteam
-#          pwd: haha
-#      master:
-#          name: zhumaster
-#          pwd: budao
-
+server:
+  port: 9000
 
 spring:
+  resources:
+    staticLocations: ["classpath:/templates/","classpath:/META-INF/resources/", "classpath:/resources/","classpath:/static/", "classpath:/public/"]
   datasource:
     manager:
       slaves:
@@ -37,6 +29,3 @@ spring:
           password: 123123
           max-active: 10
           min-idle: 0
-
-server:
-  port: 9000
