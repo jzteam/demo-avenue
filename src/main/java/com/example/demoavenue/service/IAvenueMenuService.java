@@ -8,5 +8,5 @@ import com.example.demoavenue.vo.AvenueMenuVo;
 public interface IAvenueMenuService extends IService<AvenueMenuEntity, Long> {
     AvenueMenuVo getMenuTree();
 
-    void editForForm(AvenueMenuForm form);
+    Long save(AvenueMenuForm form);
 }

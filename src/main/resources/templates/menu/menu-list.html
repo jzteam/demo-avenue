@@ -45,7 +45,7 @@
       </div>
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','./member-add.html',600,400)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加菜单','/common/menu/toAdd',600,550)"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px" th:text="${'共有数据：'+#lists.size(list)+' 条'}">共有数据：0 条</span>
       </xblock>
       <table class="layui-table">
@@ -85,7 +85,7 @@
             <td th:text="${#dates.format(menu.modifyTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
             <td class="td-manage">
-              <a title="编辑"  onclick="x_admin_show('编辑','/menu/menu-edit.html',600,400)" href="javascript:;">
+              <a title="编辑"  th:onclick="${'x_admin_show(''编辑菜单'',''/common/menu/toEdit/'+menu.id+''',600,550)'}" href="javascript:;">
                 <i class="layui-icon">&#xe642;</i>
               </a>
               <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
@@ -98,7 +98,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="page">
+      <div class="page" style="display:none;">
         <div>
           <a class="prev" href="">&lt;&lt;</a>
           <a class="num" href="">1</a>
@@ -171,12 +171,6 @@
         });
       }
     </script>
-    <script>var _hmt = _hmt || []; (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();</script>
   </body>
 
 </html>

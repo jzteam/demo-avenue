@@ -48,12 +48,18 @@ public class AvenueMenuServiceImpl extends AbstractServiceImpl<AvenueMenuEntity,
     }
 
     @Override
-    public void editForForm(AvenueMenuForm form) {
-        if(form == null || form.getId() == null){
+    public Long save(AvenueMenuForm form) {
+        if(form == null){
             throw new BizException(EnumCommonError.BIZ_PARAMS_EMPTY);
         }
-        final AvenueMenuEntity updateEntity = new AvenueMenuEntity();
-        BeanUtils.copyProperties(form, updateEntity);
-        this.update(updateEntity);
+        final AvenueMenuEntity entity = new AvenueMenuEntity();
+        BeanUtils.copyProperties(form, entity);
+
+        if(entity.getId() == null){
+            return this.insert(entity);
+        }else {
+            this.update(entity);
+            return entity.getId();
+        }
     }
 }

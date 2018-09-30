@@ -2,6 +2,8 @@ server:
   port: 9000
 
 spring:
+  thymeleaf:
+    cache: false
   resources:
     staticLocations: ["classpath:/templates/","classpath:/META-INF/resources/", "classpath:/resources/","classpath:/static/", "classpath:/public/"]
   datasource:

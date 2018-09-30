@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
   
   <head>
     <meta charset="UTF-8">
@@ -24,99 +24,152 @@
     <div class="x-body">
         <form class="layui-form">
           <div class="layui-form-item">
-              <label for="L_email" class="layui-form-label">
-                  <span class="x-red">*</span>邮箱
+              <label for="L_type" class="layui-form-label">
+                  <span class="x-red">*</span>菜单类型
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_email" name="email" required="" lay-verify="email"
-                  autocomplete="off" class="layui-input">
+                  <input type="text" id="L_type" name="type" required="" lay-verify="type"
+                  autocomplete="off" class="layui-input" th:value="${vo.type}">
               </div>
-              <div class="layui-form-mid layui-word-aux">
+              <div class="layui-form-mid layui-word-aux" style="display:none;">
                   <span class="x-red">*</span>将会成为您唯一的登入名
               </div>
           </div>
+
           <div class="layui-form-item">
-              <label for="L_username" class="layui-form-label">
-                  <span class="x-red">*</span>昵称
+              <label for="L_parentId" class="layui-form-label">
+                  <span class="x-red">*</span>父菜单id
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="L_username" name="username" required="" lay-verify="nikename"
-                  autocomplete="off" class="layui-input">
+                  <input type="text" id="L_parentId" name="parentId" required="" lay-verify="parentId"
+                  autocomplete="off" class="layui-input" th:value="${vo.parentId}">
+              </div>
+          </div>
+
+          <div class="layui-form-item">
+              <label for="L_name" class="layui-form-label">
+                  <span class="x-red">*</span>菜单名称
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="L_name" name="name" required="" lay-verify="name"
+                  autocomplete="off" class="layui-input" th:value="${vo.name}">
               </div>
           </div>
           <div class="layui-form-item">
-              <label for="L_pass" class="layui-form-label">
-                  <span class="x-red">*</span>密码
+              <label for="L_description" class="layui-form-label">
+                  <span class="x-red">*</span>菜单介绍
               </label>
               <div class="layui-input-inline">
-                  <input type="password" id="L_pass" name="pass" required="" lay-verify="pass"
-                  autocomplete="off" class="layui-input">
-              </div>
-              <div class="layui-form-mid layui-word-aux">
-                  6到16个字符
+                  <input type="text" id="L_description" name="description" required="" lay-verify="description"
+                  autocomplete="off" class="layui-input" th:value="${vo.description}">
               </div>
           </div>
+
           <div class="layui-form-item">
-              <label for="L_repass" class="layui-form-label">
-                  <span class="x-red">*</span>确认密码
+              <label for="L_iconfont" class="layui-form-label">
+                  <span class="x-red">*</span>菜单图标
               </label>
               <div class="layui-input-inline">
-                  <input type="password" id="L_repass" name="repass" required="" lay-verify="repass"
-                  autocomplete="off" class="layui-input">
+                  <input type="text" id="L_iconfont" name="iconfont" required="" lay-verify="iconfont"
+                  autocomplete="off" class="layui-input" th:value="${vo.iconfont}">
               </div>
           </div>
+
           <div class="layui-form-item">
-              <label for="L_repass" class="layui-form-label">
+              <label for="L_url" class="layui-form-label">
+                  <span class="x-red">*</span>菜单链接
               </label>
-              <button  class="layui-btn" lay-filter="add" lay-submit="">
-                  增加
+              <div class="layui-input-inline">
+                  <input type="text" id="L_url" name="url" required="" lay-verify="url"
+                  autocomplete="off" class="layui-input"  th:value="${vo.url}">
+              </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label for="L_deleteFlag" class="layui-form-label">
+                <span class="x-red">*</span>启用状态
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_deleteFlag" name="deleteFlag" required="" lay-verify="deleteFlag"
+                       autocomplete="off" class="layui-input" th:value="${vo.deleteFlag}">
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+              <button  class="layui-btn" lay-filter="edit" lay-submit="">
+                  提交修改
               </button>
           </div>
       </form>
     </div>
     <script>
       layui.use(['form','layer'], function(){
-          $ = layui.jquery;
+        $ = layui.jquery;
         var form = layui.form
         ,layer = layui.layer;
-      
-        //自定义验证规则
-        form.verify({
-          nikename: function(value){
-            if(value.length < 5){
-              return '昵称至少得5个字符啊';
-            }
-          }
-          ,pass: [/(.+){6,12}$/, '密码必须6到12位']
-          ,repass: function(value){
-              if($('#L_pass').val()!=$('#L_repass').val()){
-                  return '两次密码不一致';
-              }
-          }
-        });
 
-        //监听提交
-        form.on('submit(add)', function(data){
-          console.log(data);
-          //发异步，把数据提交给php
-          layer.alert("增加成功", {icon: 6},function () {
-              // 获得frame索引
-              var index = parent.layer.getFrameIndex(window.name);
-              //关闭当前frame
-              parent.layer.close(index);
+          //自定义验证规则
+          form.verify({
+              type: function(value){
+                  if(value.length < 1){
+                      return '必填';
+                  }
+              },
+              parentId: function(value){
+                  if(value.length < 1){
+                      return '必填';
+                  }
+              },
+              name: function(value){
+                  if(value.length < 1){
+                      return '必填';
+                  }
+              },
+              description: function(value){
+                  if(value.length < 1){
+                      return '必填';
+                  }
+              },
+              iconfont: function(value){
+                  if(value.length < 1){
+                      return '必填';
+                  }
+              },
+              url: function(value){
+                  if(value.length < 1){
+                      return '必填';
+                  }
+              },
+              deleteFlag: function(value){
+                  if(value.length < 1){
+                      return '必填';
+                  }
+              }
           });
-          return false;
-        });
+
+          //监听提交
+          form.on('submit(edit)', function(data){
+              console.log(data.field);
+              // ajax提交
+              $.post("/common/menu/save", data.field, function(r){
+                  let msg = "编辑成功";
+                  if(r.code != 0){
+                      msg = "编辑失败";
+                  }
+                  layer.alert(msg, {icon: 6},function () {
+                      // 获得frame索引
+                      var index = parent.layer.getFrameIndex(window.name);
+                      //关闭当前frame
+                      parent.layer.close(index);
+                  });
+              }, "json");
+
+              return false;
+          });
         
         
       });
-  </script>
-    <script>var _hmt = _hmt || []; (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();</script>
+    </script>
   </body>
 
 </html>
