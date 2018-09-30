@@ -23,6 +23,7 @@
   <body>
     <div class="x-body">
         <form class="layui-form">
+          <input type="hidden" name="id" th:value="${vo.id}"/>
           <div class="layui-form-item">
               <label for="L_type" class="layui-form-label">
                   <span class="x-red">*</span>菜单类型
@@ -151,6 +152,10 @@
           form.on('submit(edit)', function(data){
               console.log(data.field);
               // ajax提交
+              if(data.field.id <= 0){
+                  alert("参数id不能为空！");
+                  return false;
+              }
               $.post("/common/menu/save", data.field, function(r){
                   let msg = "编辑成功";
                   if(r.code != 0){

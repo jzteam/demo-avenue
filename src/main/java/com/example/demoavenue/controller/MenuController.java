@@ -60,4 +60,12 @@ public class MenuController {
 
     }
 
+    @GetMapping("/delete/{id}")
+    @ResponseBody
+    public void save(@PathVariable("id") Long id){
+
+        avenueMenuService.delete(id);
+
+    }
+
 }

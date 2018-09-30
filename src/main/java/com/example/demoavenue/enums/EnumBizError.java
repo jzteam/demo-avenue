@@ -4,18 +4,18 @@ import cn.jzteam.avenue.swift.enums.IEnumBizError;
 
 import java.util.Arrays;
 
-public enum EnumCommonError implements IEnumBizError {
+public enum EnumBizError implements IEnumBizError {
     BIZ_PARAMS_EMPTY(1, "error.biz.code.1");
 
     private final int code;
     private final String message;
 
-    EnumCommonError(int code, String message) {
+    EnumBizError(int code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public static EnumCommonError valueOf(int code) {
+    public static EnumBizError valueOf(int code) {
         return Arrays.stream(values()).filter((x) -> x.getCode() == code)
                 .findFirst().orElse(null);
     }

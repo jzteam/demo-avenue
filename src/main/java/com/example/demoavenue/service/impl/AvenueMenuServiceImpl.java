@@ -4,7 +4,7 @@ import cn.jzteam.avenue.dao.query.QueryCondition;
 import cn.jzteam.avenue.swift.exception.BizException;
 import cn.jzteam.avenue.swift.service.impl.AbstractServiceImpl;
 import com.example.demoavenue.entities.AvenueMenuEntity;
-import com.example.demoavenue.enums.EnumCommonError;
+import com.example.demoavenue.enums.EnumBizError;
 import com.example.demoavenue.form.AvenueMenuForm;
 import com.example.demoavenue.service.IAvenueMenuService;
 import com.example.demoavenue.vo.AvenueMenuVo;
@@ -50,7 +50,7 @@ public class AvenueMenuServiceImpl extends AbstractServiceImpl<AvenueMenuEntity,
     @Override
     public Long save(AvenueMenuForm form) {
         if(form == null){
-            throw new BizException(EnumCommonError.BIZ_PARAMS_EMPTY);
+            throw new BizException(EnumBizError.BIZ_PARAMS_EMPTY);
         }
         final AvenueMenuEntity entity = new AvenueMenuEntity();
         BeanUtils.copyProperties(form, entity);
