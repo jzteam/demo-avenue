@@ -1,8 +1,8 @@
 package com.example.demoavenue.controller;
 
-import cn.jzteam.avenue.dao.query.QueryCondition;
 import com.example.demoavenue.entities.AvenueMenuEntity;
 import com.example.demoavenue.form.AvenueMenuForm;
+import com.example.demoavenue.query.AvenueMenuQuery;
 import com.example.demoavenue.service.IAvenueMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,9 +19,9 @@ public class MenuController {
     private IAvenueMenuService avenueMenuService;
 
     @RequestMapping("/list")
-    public String list(HttpServletRequest request){
+    public String list(AvenueMenuQuery query, HttpServletRequest request){
 
-        final List<AvenueMenuEntity> avenueMenuEntities = avenueMenuService.selectList(new QueryCondition());
+        final List<AvenueMenuEntity> avenueMenuEntities = avenueMenuService.selectList(query);
         request.setAttribute("list", avenueMenuEntities);
         return "menu/menu-list";
 
@@ -54,7 +54,7 @@ public class MenuController {
 
     @PostMapping("/save")
     @ResponseBody
-    public void save(AvenueMenuForm form, HttpServletRequest request){
+    public void save(AvenueMenuForm form){
 
         avenueMenuService.save(form);
 

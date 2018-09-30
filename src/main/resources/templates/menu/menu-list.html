@@ -37,9 +37,9 @@
     <div class="x-body">
       <div class="layui-row">
         <form class="layui-form layui-col-md12 x-so">
-          <input class="layui-input" placeholder="开始时间" name="start" id="start">
-          <input class="layui-input" placeholder="截止时间" name="end" id="end">
-          <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
+          <input class="layui-input" placeholder="开始创建时间" name="begin_createTime" id="start">
+          <input class="layui-input" placeholder="截止创建时间" name="end_createTime" id="end">
+          <input type="text" name="id"  placeholder="请输入ID" autocomplete="off" class="layui-input">
           <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
         </form>
       </div>
@@ -91,7 +91,7 @@
               <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a>
-              <a title="删除" th:onclick="${'member_del(this,'+menu.id+')'}" href="javascript:;">
+              <a title="删除" th:onclick="${'del(this,'+menu.id+')'}" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
             </td>
@@ -149,8 +149,8 @@
           });
       }
 
-      /*用户-删除*/
-      function member_del(obj,id){
+      // 删除单行
+      function del(obj, id) {
           layer.confirm('确认要删除吗？',function(index){
               // 发送删除请求
               $.get("/common/menu/delete/"+id, {}, function(){
@@ -161,7 +161,7 @@
       }
 
 
-
+      // 删除所有
       function delAll (argument) {
 
         var data = tableCheck.getData();
