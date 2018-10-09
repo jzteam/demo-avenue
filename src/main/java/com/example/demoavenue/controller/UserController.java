@@ -1,7 +1,7 @@
 package com.example.demoavenue.controller;
 
 import cn.jzteam.avenue.dao.query.QueryCondition;
-import com.example.demoavenue.entities.UserKycInfoEntity;
+import com.example.demoavenue.dao.entity.UserKycInfoEntity;
 import com.example.demoavenue.form.UserKycInfoForm;
 import com.example.demoavenue.query.UserKycInfoQuery;
 import com.example.demoavenue.service.IUserKycInfoService;

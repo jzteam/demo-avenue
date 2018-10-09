@@ -1,6 +1,6 @@
 package com.example.demoavenue.controller;
 
-import com.example.demoavenue.entities.AvenueMenuEntity;
+import com.example.demoavenue.dao.entity.AvenueMenuEntity;
 import com.example.demoavenue.form.AvenueMenuForm;
 import com.example.demoavenue.query.AvenueMenuQuery;
 import com.example.demoavenue.service.IAvenueMenuService;

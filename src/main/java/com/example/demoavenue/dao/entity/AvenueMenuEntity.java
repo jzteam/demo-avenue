@@ -1,4 +1,4 @@
-package com.example.demoavenue.entities;
+package com.example.demoavenue.dao.entity;
 
 import cn.jzteam.avenue.dao.annotations.AvenueEntity;
 import lombok.Data;

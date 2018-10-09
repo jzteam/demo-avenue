@@ -4,7 +4,7 @@ import cn.jzteam.avenue.dao.query.QueryCondition;
 import cn.jzteam.avenue.swift.enums.EnumCommonCode;
 import cn.jzteam.avenue.swift.exception.BizException;
 import cn.jzteam.avenue.swift.service.impl.AbstractServiceImpl;
-import com.example.demoavenue.entities.AvenueMenuEntity;
+import com.example.demoavenue.dao.entity.AvenueMenuEntity;
 import com.example.demoavenue.form.AvenueMenuForm;
 import com.example.demoavenue.service.IAvenueMenuService;
 import com.example.demoavenue.vo.AvenueMenuVo;
