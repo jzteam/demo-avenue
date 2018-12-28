@@ -5,10 +5,24 @@ import com.example.demoavenue.utils.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.List;
 
 @Slf4j
 public abstract class AbstractTask {
+
+    public static void main(String[] args) {
+        final String page = HttpUtil.getPage(NanGuaYuanTask.domain+"thread-305248-1-1.html");
+
+        try(final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(NanGuaYuanTask.localDir+"waste/test.html")))){
+            bw.write(page);
+        }catch(Exception e){
+
+        }
+        System.out.println("写入完成");
+    }
 
     public void execute(int startPage, int endPage) {
 
@@ -38,10 +52,10 @@ public abstract class AbstractTask {
             // 路径
             String localPath = this.getLocalPath(x);
             // 下载
-            Fileutil.download("http:"+x, localPath);
+            Fileutil.download(x, localPath);
         });
     }
-
+    
     public abstract String getPageUrl(int pageNum);
 
     public abstract List<String> parseImgUrl(List<String> contentLines);
