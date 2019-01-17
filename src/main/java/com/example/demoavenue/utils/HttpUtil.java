@@ -1,5 +1,6 @@
 package com.example.demoavenue.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -14,6 +15,7 @@ import java.util.List;
 /**
  * Http请求相关工具
  */
+@Slf4j
 public class HttpUtil {
 
     /**
@@ -62,7 +64,7 @@ public class HttpUtil {
             }
             return lines;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("getLines error",e);
         }
         return null;
     }

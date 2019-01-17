@@ -1,11 +1,14 @@
 package com.example.demoavenue.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+@Slf4j
 public class GzipUtil  {
     public static final String GZIP_ENCODE_UTF_8 = "UTF-8";
     public static final String GZIP_ENCODE_ISO_8859_1 = "ISO-8859-1";
@@ -37,7 +40,7 @@ public class GzipUtil  {
             gzip.write(str.getBytes(encoding));
             gzip.close();
         } catch ( Exception e) {
-            e.printStackTrace();
+            log.error("compress error",e);
         }
         return out.toByteArray();
     }
@@ -74,7 +77,7 @@ public class GzipUtil  {
             }
             return out.toString(encoding);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("uncompressToString error",e);
         }
         return null;
     }
@@ -98,7 +101,7 @@ public class GzipUtil  {
                 out.write(buffer, 0, n);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("uncompress error",e);
         }
         return out.toByteArray();
     }

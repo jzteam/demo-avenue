@@ -15,11 +15,13 @@ public class Fileutil {
      */
     public static void download(String fileUrl, String localPath) {
         System.out.println("开始下载图片："+fileUrl);
+        DataInputStream dataInputStream = null;
+        FileOutputStream fileOutputStream = null;
         try {
             URL url = new URL(fileUrl);
-            DataInputStream dataInputStream = new DataInputStream(url.openStream());
+            dataInputStream = new DataInputStream(url.openStream());
 
-            FileOutputStream fileOutputStream = new FileOutputStream(new File(localPath));
+            fileOutputStream = new FileOutputStream(new File(localPath));
             ByteArrayOutputStream output = new ByteArrayOutputStream();
 
             byte[] buffer = new byte[1024];
@@ -35,6 +37,17 @@ public class Fileutil {
             log.error("download MalformedURLException 异常：fileUrl={}, localPath={}", fileUrl, localPath);
         } catch (IOException e) {
             log.error("download IOException 异常：fileUrl={}, localPath={}", fileUrl, localPath);
+        }finally{
+            if(dataInputStream != null){
+                try {
+                    dataInputStream.close();
+                }catch (Exception e){}
+            }
+            if(fileOutputStream != null){
+                try{
+                    fileOutputStream.close();
+                }catch (Exception e){}
+            }
         }
     }
 

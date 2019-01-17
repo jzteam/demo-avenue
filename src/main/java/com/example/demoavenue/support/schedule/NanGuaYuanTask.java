@@ -9,8 +9,8 @@ import java.util.List;
 
 public class NanGuaYuanTask extends AbstractTask {
     
-    public static String domain = "http://www.kan2008.com/";
-    public static String localDir = "/Users/oker/Documents/devote/scratch/nanguayuan/";
+    public static final String domain = "http://www.kan2008.com/";
+    public static final String localDir = "/Users/oker/Documents/devote/scratch/nanguayuan/";
 
     public static void main(String[] args) {
 
