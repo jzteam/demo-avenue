@@ -12,14 +12,14 @@ spring:
       slaves:
         - type: com.alibaba.druid.pool.DruidDataSource
           driver-class-name: com.mysql.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/okcoin_user_local?characterEncoding=UTF-8&amp;autoReconnect=true&amp;rewriteBatchedStatements=true&amp;userSSL=true
+          url: jdbc:mysql://localhost:3306/avenue?characterEncoding=UTF-8&amp;autoReconnect=true&amp;rewriteBatchedStatements=true&amp;userSSL=true
           username: root
           password: 123123
           max-active: 10
           min-idle: 0
         - type: com.alibaba.druid.pool.DruidDataSource
           driver-class-name: com.mysql.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/okcoin_user_local?characterEncoding=UTF-8&amp;autoReconnect=true&amp;rewriteBatchedStatements=true&amp;userSSL=true
+          url: jdbc:mysql://localhost:3306/avenue?characterEncoding=UTF-8&amp;autoReconnect=true&amp;rewriteBatchedStatements=true&amp;userSSL=true
           username: root
           password: 123123
           max-active: 10
@@ -27,7 +27,7 @@ spring:
       master:
           type: com.alibaba.druid.pool.DruidDataSource
           driver-class-name: com.mysql.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/okcoin_user_local?characterEncoding=UTF-8&amp;autoReconnect=true&amp;rewriteBatchedStatements=true&amp;userSSL=true
+          url: jdbc:mysql://localhost:3306/avenue?characterEncoding=UTF-8&amp;autoReconnect=true&amp;rewriteBatchedStatements=true&amp;userSSL=true
           username: root
           password: 123123
           max-active: 10
