@@ -18,10 +18,10 @@ CREATE TABLE `avenue_menu` (
 	PRIMARY KEY (`id`)
 ) COMMENT '菜单表';
 
-insert into avenue_menu (`id`,`parent_id`,`type`,`name`,`description`,`iconfont`)values
-(1,0,0,"root","根标签","",""),
-(2,1,1,"会员管理","desc","&#xe6b8;",""),
-(3,1,1,"分类管理","desc","&#xe723;",""),
-(4,1,1,"城市联动","desc","&#xe723;",""),
-(5,1,1,"图标字体","desc","&#xe6b4;",""),
-(6,5,2,"图标对应字体","desc","&#xe6a7;","/common/unicode.html");
+insert into avenue_menu (`id`,`parent_id`,`type`,`name`,`description`,`iconfont`, `url`)values
+(1,0,0,'root','根标签','',''),
+(2,1,1,'会员管理','desc','&#xe6b8;',''),
+(3,1,1,'分类管理','desc','&#xe723;',''),
+(4,1,1,'城市联动','desc','&#xe723;',''),
+(5,1,1,'图标字体','desc','&#xe6b4;',''),
+(6,5,2,'图标对应字体','desc','&#xe6a7;','/common/unicode.html');
