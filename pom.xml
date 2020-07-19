@@ -3,19 +3,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+
+	<parent>
+		<groupId>cn.jzteam</groupId>
+		<artifactId>avenue-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
 	<groupId>com.example</groupId>
 	<artifactId>demo-avenue</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>demo-avenue</name>
 	<description>Demo project for Spring Boot</description>
-
-	<parent>
-		<groupId>cn.jzteam</groupId>
-		<artifactId>avenue</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
 
 	<properties>
 		<project.gitlab.url>git@github.com:jzteam/demo-avenue.git</project.gitlab.url>
@@ -30,24 +30,10 @@
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
-		<!-- 使用starter，必须显式引用 swift 组件，包含 starter-web -->
-		<dependency>
-			<groupId>cn.jzteam</groupId>
-			<artifactId>avenue-swift</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-
-		<!-- 使用starter，必须显式引用 security 组件 -->
-		<dependency>
-			<groupId>cn.jzteam</groupId>
-			<artifactId>avenue-security</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-			<version>1.5.18.RELEASE</version>
+			<version>${spring-boot.version}</version>
 		</dependency>
 		<!-- 解决thymeleaf严格校验html5的语法 -->
 		<dependency>
@@ -62,6 +48,18 @@
 			<version>1.16.10</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.30</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring-boot.version}</version>
+		</dependency>
+
 		<!-- html解析器 -->
 		<dependency>
 			<groupId>org.jsoup</groupId>
@@ -73,19 +71,6 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.6</version>
-		</dependency>
-
-		<!-- 热部署 -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
